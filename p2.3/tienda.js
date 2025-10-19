@@ -1,6 +1,7 @@
 // tienda.js
 import express   from "express"
 import nunjucks  from "nunjucks"
+import session   from "express-session"
 
 import connectDB from "./model/db.js"
 await connectDB()
@@ -8,6 +9,9 @@ await connectDB()
 import TiendaRouter from "./routes/router_tienda.js"
 
 const app = express()
+
+// Middleware para parsear JSON
+app.use(express.json())
 
 const IN = process.env.IN || 'development'
 
@@ -32,6 +36,13 @@ env.addFilter('toJson', function(obj) {
 });
 
 app.set('view engine', 'html')
+
+// Configuración de sesiones
+app.use(session({
+    secret: 'my-secret',      // a secret string used to sign the session ID cookie
+    resave: false,            // don't save session if unmodified
+    saveUninitialized: true   // create session even if nothing stored (needed for cart display)
+}))
 
 app.use('/static', express.static('public'))     // directorio public para archivos css, js, imágenes, etc.
 

@@ -74,13 +74,17 @@
 
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="/">Inicio</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="/productos">Productos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Carrito</a>
+                        <a class="nav-link {% if carrito.numProductos > 0 %}cart-with-items{% endif %}" href="/carrito">
+                            <i class="bi bi-cart"></i>
+                            Carrito
+                            {% if carrito.numProductos > 0 %}
+                            <span class="badge bg-primary ms-1">{{ carrito.numProductos }}</span>
+                            <span class="cart-total ms-2">{{ carrito.totalCarrito | formatearPrecio }}</span>
+                            {% endif %}
+                        </a>
                     </li>
                 </ul>
             </div>

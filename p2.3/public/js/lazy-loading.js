@@ -12,7 +12,7 @@ function formatearPrecioEspanol(precio) {
 /**
  * Componente Alpine.js para Lazy Loading
  */
-function lazyLoadingComponent(productosIniciales, categoriaActiva, busquedaActiva) {
+function lazyLoadingComponent(productosIniciales, categoriaActiva, busquedaActiva, carritoItems) {
   return {
     productos: productosIniciales || [],
     paginaActual: 1,
@@ -21,10 +21,22 @@ function lazyLoadingComponent(productosIniciales, categoriaActiva, busquedaActiv
     limite: 12,
     categoriaActiva: (categoriaActiva && categoriaActiva !== 'null') ? categoriaActiva : null,
     busquedaActiva: (busquedaActiva && busquedaActiva !== 'null') ? busquedaActiva : null,
+    carrito: carritoItems || [],
 
     init() {
       // Actualizar contador inicial
       this.actualizarContador();
+    },
+
+    // Verifica si un producto está en el carrito
+    productoEnCarrito(productoId) {
+      return this.carrito.find(item => item._id === productoId);
+    },
+
+    // Obtiene la cantidad de un producto en el carrito
+    getCantidadEnCarrito(productoId) {
+      const item = this.productoEnCarrito(productoId);
+      return item ? item.cantidad : 0;
     },
 
     checkScroll() {
@@ -92,6 +104,91 @@ function lazyLoadingComponent(productosIniciales, categoriaActiva, busquedaActiv
 
     formatearPrecio(precio) {
       return formatearPrecioEspanol(precio);
+    },
+
+    // Métodos para interactuar con el carrito de forma asíncrona
+    async agregarAlCarrito(productId, button) {
+      try {
+        const originalText = button.innerHTML;
+        button.disabled = true;
+        button.innerHTML = '<span class="spinner-border spinner-border-sm me-1"></span>Agregando...';
+
+        const response = await fetch(`/api/carrito/agregar/${productId}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' }
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+          // Actualizar el estado local del carrito
+          this.carrito = data.carrito.items;
+
+          // Actualizar header
+          actualizarHeaderCarrito(data.carrito);
+
+          // Feedback visual temporal
+          button.classList.remove('btn-primary');
+          button.classList.add('btn-success');
+          button.innerHTML = '<i class="bi bi-check"></i> ¡Añadido!';
+
+          // Los controles aparecerán automáticamente gracias a Alpine.js
+        } else {
+          throw new Error(data.error || 'Error al añadir al carrito');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        button.classList.add('btn-danger');
+        button.innerHTML = '<i class="bi bi-x"></i> Error';
+
+        setTimeout(() => {
+          button.classList.remove('btn-danger');
+          button.disabled = false;
+          button.innerHTML = originalText;
+        }, 2000);
+      }
+    },
+
+    async incrementarCantidad(productId, displayElement) {
+      try {
+        const response = await fetch(`/api/carrito/incrementar/${productId}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' }
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+          // Actualizar el estado local del carrito
+          this.carrito = data.carrito.items;
+
+          // Actualizar header
+          actualizarHeaderCarrito(data.carrito);
+        }
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    },
+
+    async decrementarCantidad(productId, displayElement) {
+      try {
+        const response = await fetch(`/api/carrito/decrementar/${productId}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' }
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+          // Actualizar el estado local del carrito
+          this.carrito = data.carrito.items;
+
+          // Actualizar header
+          actualizarHeaderCarrito(data.carrito);
+        }
+      } catch (error) {
+        console.error('Error:', error);
+      }
     }
   };
 }

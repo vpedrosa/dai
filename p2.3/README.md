@@ -1,169 +1,80 @@
-# Práctica 2.3 - Tienda Online MPA
+# Tienda Online MPA
 
-Aplicación web MPA (Multi-Page Application) para una tienda online que muestra 3 productos aleatorios en la portada.
+Aplicación web de tienda online con carrito de compras, búsqueda, filtros y lazy loading.
 
-## Tecnologías Utilizadas
+## Tecnologías
 
-- **Express**: Framework web para Node.js
-- **Nunjucks**: Motor de plantillas HTML
-- **Mongoose**: ODM para MongoDB
-- **Bootstrap 5**: Framework CSS
-- **MongoDB**: Base de datos NoSQL
-- **Docker**: Contenedores para MongoDB y Mongo Express
-
-## Estructura del Proyecto
-
-```
-├── data/                    # Datos de MongoDB (ignorado en git)
-├── model/                   # Modelos y conexión a BD
-│   ├── db.js               # Conexión a MongoDB
-│   └── Producto.js         # Esquema del Producto
-├── public/                  # Assets estáticos
-│   └── css/
-│       └── style.css       # Estilos personalizados
-├── routes/                  # Controladores (Routes)
-│   └── router_tienda.js    # Rutas de la tienda
-├── views/                   # Vistas (Templates)
-│   ├── base.html           # Plantilla base con Bootstrap
-│   ├── portada.html        # Página principal
-│   └── test.html           # Página de prueba
-├── .env                     # Variables de entorno (no en git)
-├── .gitignore              # Archivos ignorados por git
-├── docker-compose.yml      # Configuración de contenedores
-├── package.json            # Dependencias del proyecto
-├── seed.js                 # Script para poblar la BD
-└── tienda.js              # Servidor principal
-```
-
-## Arquitectura
-
-El proyecto sigue el patrón **MVC (Model-View-Controller)**:
-
-- **Model**: `model/Producto.js` y `model/db.js`
-- **View**: Plantillas Nunjucks en `views/`
-- **Controller**: Rutas en `routes/router_tienda.js`
+- **Backend**: Express + Nunjucks + Mongoose
+- **Base de datos**: MongoDB
+- **Frontend**: Bootstrap 5 + Alpine.js
+- **Dev**: Docker
 
 ## Instalación
 
-### 1. Instalar dependencias
-
 ```bash
+# 1. Copiar variables de entorno
+cp .env.example .env
+
+# 2. Instalar dependencias
 npm install
-```
 
-### 2. Iniciar MongoDB con Docker
-
-```bash
+# 3. Iniciar MongoDB
 docker-compose up -d
-```
 
-Esto iniciará:
-- MongoDB en el puerto **27017**
-- Mongo Express en el puerto **8081** (interfaz web: http://localhost:8081)
-
-### 3. Poblar la base de datos
-
-```bash
+# 4. Poblar base de datos
 npm run seed
-```
 
-Este comando cargará los productos desde `data/productos.json` a MongoDB.
-
-### 4. Iniciar el servidor
-
-```bash
+# 5. Iniciar servidor
 npm run dev
 ```
 
-El servidor se ejecutará en **http://localhost:8000**
+Servidor: http://localhost:8000
+Mongo Express: http://localhost:8081
 
-## Scripts Disponibles
+## Arquitectura MVC
 
-- `npm run dev`: Inicia el servidor en modo desarrollo con auto-reload
-- `npm start`: Inicia el servidor en modo producción
-- `npm run seed`: Carga los productos en la base de datos
-
-## Rutas Disponibles
-
-- `/` - Portada con 3 productos aleatorios
-- `/hola` - Test del servidor (respuesta JSON)
-- `/test` - Test de plantillas
-
-## Variables de Entorno (.env)
-
-```env
-USER_DB=root
-PASS=example
-IN=development
-PORT=8000
+```
+├── model/                   # Modelos
+│   ├── db.js               # Conexión MongoDB
+│   ├── Producto.js         # Esquema Producto
+│   └── Carrito.js          # Modelo Carrito
+├── services/               # Lógica de negocio
+│   └── carritoService.js   # Servicio del carrito
+├── controllers/            # Controladores
+│   ├── productosController.js
+│   └── carritoController.js
+├── middlewares/            # Middlewares
+│   └── carritoMiddleware.js
+├── routes/                 # Rutas
+│   └── router_tienda.js    # Definición de rutas
+├── views/                  # Vistas Nunjucks
+└── public/                 # Assets estáticos
+    ├── css/
+    └── js/                 # Scripts del cliente
 ```
 
-## Características Destacadas
+## Rutas Principales
 
-### Selección Aleatoria de Productos (Para Nota)
+- `/` - Portada (3 productos aleatorios)
+- `/productos` - Listado con filtros
+- `/producto/:id` - Detalle de producto
+- `/carrito` - Carrito de compras
+- `/api/productos` - API paginación
+- `/api/buscar` - API búsqueda
+- `/api/carrito/*` - APIs del carrito
 
-La portada muestra 3 productos seleccionados aleatoriamente de la base de datos:
+## Características
 
-1. Se consulta el número total de productos
-2. Se generan 3 índices aleatorios únicos
-3. Se recuperan los productos correspondientes a esos índices
+- Carrito de compras en sesión
+- Búsqueda en tiempo real
+- Infinite scroll (lazy loading)
+- Filtros por categoría
+- Productos relacionados
+- Precios rebajados
+- Diseño responsive
 
-Ver implementación en `routes/router_tienda.js:11`
+## Scripts
 
-### Herencia de Plantillas
-
-Todas las vistas heredan de `base.html` usando Nunjucks:
-
-```html
-{% extends "base.html" %}
-
-{% block content %}
-  <!-- Contenido específico -->
-{% endblock %}
-```
-
-### Diseño Responsivo con Bootstrap 5
-
-- Navbar con menú responsive
-- Cards de productos con hover effects
-- Sistema de grid responsive
-- Componentes Bootstrap integrados
-
-## Capturas
-
-### Portada
-La portada muestra 3 productos aleatorios con:
-- Imagen del producto
-- Categoría
-- Nombre y descripción
-- Precio
-- Botón para añadir al carrito
-
-### Hero Section
-Sección de bienvenida con gradiente de fondo y llamada a la acción.
-
-## Notas Técnicas
-
-- Las plantillas se recargan automáticamente en modo desarrollo
-- El servidor se reinicia automáticamente al guardar cambios (Ctrl+S)
-- Los passwords están en variables de entorno, no en el código
-- Los datos de MongoDB se almacenan en `./data` (no versionado)
-
-## Limpieza
-
-Para detener y eliminar los contenedores de Docker:
-
-```bash
-docker-compose down
-```
-
-Para eliminar también los datos:
-
-```bash
-docker-compose down -v
-rm -rf data/
-```
-
-## Autor
-
-Práctica de Desarrollo de Aplicaciones para Internet (DAI)
+- `npm run dev` - Desarrollo con auto-reload
+- `npm start` - Producción
+- `npm run seed` - Poblar BD

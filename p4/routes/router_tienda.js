@@ -25,19 +25,132 @@ router.get('/api/buscar', productosController.buscarProductos);
 
 // ==================== API RESTful - Práctica 4 ====================
 
-// GET - Obtener todos los productos (paginados)
+/**
+ * @swagger
+ * /api/productos:
+ *   get:
+ *     summary: Obtener todos los productos
+ *     description: Retorna una lista paginada de todos los productos disponibles en la tienda
+ *     tags: [Productos]
+ *     parameters:
+ *       - $ref: '#/components/parameters/page'
+ *       - $ref: '#/components/parameters/limit'
+ *     responses:
+ *       200:
+ *         description: Lista de productos obtenida exitosamente
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/PaginacionResponse'
+ *       500:
+ *         $ref: '#/components/responses/ServerError'
+ */
 router.get('/api/productos', productosController.obtenerProductosPaginados);
 
-// GET - Obtener un producto por ID
+/**
+ * @swagger
+ * /api/productos/{id}:
+ *   get:
+ *     summary: Obtener un producto por ID
+ *     description: Retorna los detalles de un producto específico identificado por su ID
+ *     tags: [Productos]
+ *     parameters:
+ *       - $ref: '#/components/parameters/productId'
+ *     responses:
+ *       200:
+ *         description: Producto encontrado
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Producto'
+ *       404:
+ *         $ref: '#/components/responses/NotFound'
+ *       500:
+ *         $ref: '#/components/responses/ServerError'
+ */
 router.get('/api/productos/:id', productosController.obtenerProductoPorId);
 
-// POST - Crear un nuevo producto
+/**
+ * @swagger
+ * /api/productos:
+ *   post:
+ *     summary: Crear un nuevo producto
+ *     description: Crea un nuevo producto en la base de datos
+ *     tags: [Productos]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/ProductoInput'
+ *     responses:
+ *       201:
+ *         description: Producto creado exitosamente
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Producto'
+ *       400:
+ *         $ref: '#/components/responses/BadRequest'
+ *       500:
+ *         $ref: '#/components/responses/ServerError'
+ */
 router.post('/api/productos', productosController.crearProducto);
 
-// PUT - Actualizar producto (principalmente precio)
+/**
+ * @swagger
+ * /api/productos/{id}:
+ *   put:
+ *     summary: Actualizar producto
+ *     description: Actualiza los datos de un producto existente (principalmente el precio)
+ *     tags: [Productos]
+ *     parameters:
+ *       - $ref: '#/components/parameters/productId'
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/ProductoPrecio'
+ *     responses:
+ *       200:
+ *         description: Producto actualizado exitosamente
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Producto'
+ *       404:
+ *         $ref: '#/components/responses/NotFound'
+ *       500:
+ *         $ref: '#/components/responses/ServerError'
+ */
 router.put('/api/productos/:id', productosController.actualizarProducto);
 
-// DELETE - Eliminar un producto
+/**
+ * @swagger
+ * /api/productos/{id}:
+ *   delete:
+ *     summary: Eliminar un producto
+ *     description: Elimina un producto de la base de datos identificado por su ID
+ *     tags: [Productos]
+ *     parameters:
+ *       - $ref: '#/components/parameters/productId'
+ *     responses:
+ *       200:
+ *         description: Producto eliminado exitosamente
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 mensaje:
+ *                   type: string
+ *                   example: Producto eliminado correctamente
+ *       404:
+ *         $ref: '#/components/responses/NotFound'
+ *       500:
+ *         $ref: '#/components/responses/ServerError'
+ */
 router.delete('/api/productos/:id', productosController.eliminarProducto);
 
 // API para cambiar precio (solo admin - endpoint antiguo)

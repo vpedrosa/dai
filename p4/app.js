@@ -5,6 +5,7 @@ import session   from "express-session"
 import cookieParser from "cookie-parser"
 import jwt from "jsonwebtoken"
 import logger from "./config/logger.js"
+import { swaggerUi, swaggerSpec } from "./config/swagger.js"
 
 import TiendaRouter from "./routes/router_tienda.js"
 import UsuariosRouter from "./routes/router_usuarios.js"
@@ -106,6 +107,12 @@ app.use((req, res, next) => {
 });
 
 app.use('/static', express.static('public'))     // directorio public para archivos css, js, imágenes, etc.
+
+// Documentación de la API con Swagger
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec, {
+  customCss: '.swagger-ui .topbar { display: none }',
+  customSiteTitle: 'Documentación API - Tienda Online'
+}));
 
 // test para el servidor
 app.get("/hola", (req, res) => {

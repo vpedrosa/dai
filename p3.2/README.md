@@ -38,7 +38,7 @@ Mongo Express: http://localhost:8081
 Al ejecutar el seed (`npm run seed`) se crea automáticamente un usuario administrador:
 
 - **Usuario**: `admin`
-- **Contraseña**: `admin`
+- **Contraseña**: `admin123`
 
 Los usuarios administradores tienen acceso a:
 - Botón "Cambiar precio" en las tarjetas de productos

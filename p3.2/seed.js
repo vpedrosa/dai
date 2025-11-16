@@ -55,19 +55,22 @@ async function seed() {
 
     console.log(`✓ ${productosActualizados} productos marcados como rebajados (10% de descuento)`);
 
-    // Crear usuario administrador
-    // Primero eliminar usuario admin existente si lo hay
-    await Usuario.deleteOne({ username: 'admin' });
+    // Crear usuario administrador solo si no existe
+    const adminExistente = await Usuario.findOne({ username: 'admin' });
 
-    const adminUser = new Usuario({
-      username: 'admin',
-      email: 'admin@tienda.com',
-      password: 'admin', // Se cifrará automáticamente por el hook pre-save
-      admin: true
-    });
+    if (!adminExistente) {
+      const adminUser = new Usuario({
+        username: 'admin',
+        email: 'admin@tienda.com',
+        password: 'admin123', // Se cifrará automáticamente por el hook pre-save
+        admin: true
+      });
 
-    await adminUser.save();
-    console.log("✓ Usuario administrador creado (username: 'admin', password: 'admin')");
+      await adminUser.save();
+      console.log("✓ Usuario administrador creado (username: 'admin', password: 'admin123')");
+    } else {
+      console.log("✓ Usuario administrador ya existe, no se creó uno nuevo");
+    }
 
     // Cerrar la conexión con la base de datos
     await mongoose.connection.close();

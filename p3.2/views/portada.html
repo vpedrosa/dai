@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+
+{% block title %}Portada - Tienda Online{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center">
+                <h1 class="mb-3">Bienvenido a Nuestra Tienda</h1>
+                <p class="lead mb-4">Descubre nuestros productos destacados</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Productos Destacados -->
+<section class="py-5">
+    <div class="container">
+        <h2 class="section-title text-center mb-5">Productos Destacados</h2>
+
+        {% if productos and productos.length > 0 %}
+        <div class="row g-4">
+            {% for producto in productos %}
+            <div class="col-md-4">
+                <div class="card product-card h-100">
+                    <a href="/producto/{{ producto._id }}" class="text-decoration-none">
+                        <img src="{{ producto.imageUrl }}"
+                             class="card-img-top"
+                             alt="{{ producto.text1 }}"
+                             style="height: 250px; object-fit: contain; padding: 20px;">
+                    </a>
+                    <div class="card-body d-flex flex-column">
+                        <span class="badge mb-2 align-self-start">{{ producto.category }}</span>
+                        <a href="/producto/{{ producto._id }}" class="text-decoration-none">
+                            <h5 class="card-title text-dark">{{ producto.text1 }}</h5>
+                        </a>
+                        <p class="card-text text-muted small">{{ producto.text2 }}</p>
+                        <div class="mt-auto">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                {% if producto.precioRebajado and producto.precioRebajado > 0 %}
+                                <div class="price-container">
+                                    <span class="product-price-original text-muted text-decoration-line-through small">{{ producto.priceText }}</span>
+                                    <span class="product-price product-price-sale">{{ producto.precioRebajado | formatearPrecio }}</span>
+                                    <span class="badge bg-danger ms-2">-10%</span>
+                                </div>
+                                {% else %}
+                                <span class="product-price">{{ producto.priceText }}</span>
+                                {% endif %}
+                            </div>
+                            <!-- Botón de cambiar precio (solo para admin) -->
+                            {% if admin %}
+                            <button type="button"
+                                    class="btn btn-warning btn-sm w-100 mb-2"
+                                    onclick="cambiarPrecio('{{ producto._id }}')">
+                                <i class="bi bi-pencil-square"></i> Cambiar precio
+                            </button>
+                            {% endif %}
+
+                            {# Verificar si el producto está en el carrito #}
+                            {% set itemEnCarrito = null %}
+                            {% for item in carrito.items %}
+                                {% if item._id.toString() == producto._id.toString() %}
+                                    {% set itemEnCarrito = item %}
+                                {% endif %}
+                            {% endfor %}
+
+                            {# Si está en el carrito, mostrar controles de cantidad #}
+                            {% if itemEnCarrito %}
+                            <div class="quantity-controls-card" id="controls-{{ producto._id }}">
+                                <button type="button"
+                                        class="btn btn-sm btn-outline-secondary quantity-btn"
+                                        title="Disminuir cantidad"
+                                        onclick="decrementarCantidad('{{ producto._id }}', document.querySelector('#controls-{{ producto._id }} .quantity-display'))">
+                                    <i class="bi bi-dash"></i>
+                                </button>
+                                <span class="quantity-display">{{ itemEnCarrito.cantidad }}</span>
+                                <button type="button"
+                                        class="btn btn-sm btn-outline-secondary quantity-btn"
+                                        title="Aumentar cantidad"
+                                        onclick="incrementarCantidad('{{ producto._id }}', document.querySelector('#controls-{{ producto._id }} .quantity-display'))">
+                                    <i class="bi bi-plus"></i>
+                                </button>
+                            </div>
+                            {% else %}
+                            {# Si no está, mostrar botón de añadir #}
+                            <button type="button"
+                                    class="btn btn-primary w-100"
+                                    onclick="agregarAlCarrito('{{ producto._id }}', this)">
+                                Añadir al carrito
+                            </button>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="alert text-center" role="alert">
+            <h4 class="alert-heading">No hay productos disponibles</h4>
+        </div>
+        {% endif %}
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-5 mt-5" style="background-color: var(--bg-light); border-top: 1px solid var(--border-color);">
+    <div class="container text-center">
+        <h2 class="mb-3">¿Quieres ver más productos?</h2>
+        <p class="lead text-muted mb-4">Explora nuestro catálogo completo</p>
+        <a href="/productos" class="btn btn-primary btn-lg">Ver todos los productos</a>
+    </div>
+</section>
+{% endblock %}

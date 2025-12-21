@@ -6,7 +6,8 @@ Aplicación web de tienda online con carrito de compras, búsqueda, filtros y la
 
 - **Backend**: Express + Nunjucks + Mongoose
 - **Base de datos**: MongoDB
-- **Frontend**: Bootstrap 5 + Alpine.js
+- **Frontend MPA**: Bootstrap 5 + Alpine.js
+- **Frontend SPA**: React + Vite + Tailwind + SWR
 - **Logging**: Winston
 - **Dev**: Docker
 
@@ -31,6 +32,21 @@ npm run dev
 
 Servidor: http://localhost:8000
 Mongo Express: http://localhost:8081
+
+## Frontend React (SPA)
+
+El proyecto incluye un frontend React con búsqueda anticipada en la carpeta `frontend/`.
+
+```bash
+# 1. Instalar dependencias del frontend
+cd frontend
+npm install
+
+# 2. Iniciar servidor de desarrollo (requiere backend corriendo)
+npm run dev
+```
+
+Frontend React: http://localhost:5173
 
 ## Variables de entorno
 

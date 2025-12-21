@@ -12,6 +12,18 @@ import UsuariosRouter from "./routes/router_usuarios.js"
 
 const app = express()
 
+// Middleware CORS para permitir peticiones desde el frontend React (puerto 5173)
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', 'http://localhost:5173')
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+    res.header('Access-Control-Allow-Credentials', 'true')
+    if (req.method === 'OPTIONS') {
+        return res.sendStatus(200)
+    }
+    next()
+})
+
 // Middleware para parsear JSON y cookies
 app.use(express.json())
 app.use(express.urlencoded({ extended: true })) // Para parsear datos de formularios

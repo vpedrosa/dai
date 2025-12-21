@@ -20,8 +20,19 @@ router.get('/productos', productosController.listarProductos);
 // Detalle de producto individual
 router.get('/producto/:id', productosController.mostrarDetalleProducto);
 
+// Página de búsqueda anticipada - Práctica 5.2 y 5.3
+router.get('/busqueda-anticipada', (req, res) => {
+    res.render('busqueda-anticipada.html');
+});
+
+// Página de administración de precios - Práctica 5.1
+router.get('/productos-admin', productosController.listarProductosAdmin);
+
 // API de búsqueda
 router.get('/api/buscar', productosController.buscarProductos);
+
+// API de búsqueda anticipada - Práctica 5.2
+router.get('/api/busqueda-anticipada/:texto', productosController.busquedaAnticipada);
 
 // ==================== API RESTful - Práctica 4 ====================
 

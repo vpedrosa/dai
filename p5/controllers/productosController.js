@@ -146,6 +146,29 @@ export async function obtenerProductosPaginados(req, res) {
 }
 
 /**
+ * Muestra el listado de productos para administración - Práctica 5.1
+ * GET /productos-admin
+ */
+export async function listarProductosAdmin(req, res) {
+  try {
+    // Verificar que el usuario es admin
+    if (!req.admin) {
+      return res.redirect('/productos');
+    }
+
+    // Obtener todos los productos
+    const productos = await Producto.find({});
+
+    res.render('productos-admin.html', {
+      productos
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send(err.message);
+  }
+}
+
+/**
  * Muestra el detalle de un producto individual
  * GET /producto/:id
  */
@@ -198,6 +221,37 @@ export async function buscarProductos(req, res) {
     .select('text1 text2 category imageUrl priceText precioRebajado priceEuros');
 
     res.json({ resultados });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: err.message });
+  }
+}
+
+/**
+ * API de búsqueda anticipada - Práctica 5.2
+ * GET /api/busqueda-anticipada/:texto
+ * Devuelve una lista con los productos que contengan la cadena de búsqueda
+ */
+export async function busquedaAnticipada(req, res) {
+  try {
+    const texto = req.params.texto || '';
+
+    // Requiere al menos 3 caracteres según la práctica
+    if (!texto || texto.trim().length < 3) {
+      return res.json([]);
+    }
+
+    // Buscar en text1, text2 y category con regex case-insensitive
+    const productos = await Producto.find({
+      $or: [
+        { text1: { $regex: texto, $options: 'i' } },
+        { text2: { $regex: texto, $options: 'i' } },
+        { category: { $regex: texto, $options: 'i' } }
+      ]
+    })
+    .select('_id text1 text2 category imageUrl priceText precioRebajado priceEuros');
+
+    res.json(productos);
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: err.message });

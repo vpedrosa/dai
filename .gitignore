@@ -44,3 +44,6 @@ coverage/
 
 # Bootstrap Icons (copiados de node_modules)
 public/bootstrap-icons/
+
+# Documentación de prácticas (local)
+Práctica*.md

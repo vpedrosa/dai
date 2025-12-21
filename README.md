@@ -20,7 +20,7 @@ cp .env.example .env
 npm install
 
 # 3. Iniciar MongoDB
-docker-compose up -d
+docker compose up -d
 
 # 4. Poblar base de datos
 npm run seed
@@ -31,6 +31,16 @@ npm run dev
 
 Servidor: http://localhost:8000
 Mongo Express: http://localhost:8081
+
+## Variables de entorno
+
+El archivo `.env.example` contiene las variables necesarias:
+
+| Variable | Descripción | Valor por defecto |
+|----------|-------------|-------------------|
+| `USER_DB` | Usuario de MongoDB | `root` |
+| `PASS` | Contraseña de MongoDB | `example` |
+| `SECRET_KEY` | Clave secreta para JWT | `mi_clave_secreta_jwt_2025` |
 
 ## Autenticación y Autorización
 
@@ -86,14 +96,16 @@ Los usuarios administradores tienen acceso a:
 - `/` - Portada (3 productos aleatorios)
 - `/productos` - Listado con filtros
 - `/producto/:id` - Detalle de producto
-- `/api/buscar` - API búsqueda
+- `/productos-admin` - Edición de precios (solo admin)
+- `/busqueda-anticipada` - Búsqueda con resultados en tiempo real
 
-### API RESTful (Práctica 4)
+### API RESTful
 - `GET /api/productos` - Obtener todos los productos (paginados)
 - `GET /api/productos/:id` - Obtener producto por ID
 - `POST /api/productos` - Crear nuevo producto
 - `PUT /api/productos/:id` - Actualizar precio de producto
 - `DELETE /api/productos/:id` - Eliminar producto
+- `GET /api/busqueda-anticipada/:texto` - Buscar productos por texto
 
 Ver documentación completa en [API.md](API.md)
 

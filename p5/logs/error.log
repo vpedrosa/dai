@@ -1,0 +1,228 @@
+2025-11-16 23:16:10 [error]: Error al crear producto: Producto validation failed: subcategory: Path `subcategory` is required.
+ValidationError: Producto validation failed: subcategory: Path `subcategory` is required.
+    at model.Document.invalidate (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/document.js:3362:32)
+    at /home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/document.js:3123:17
+    at /home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/schemaType.js:1417:9
+    at processTicksAndRejections (node:internal/process/task_queues:85:11)
+2025-11-16 23:16:10 [error]: Error al obtener producto: Cast to ObjectId failed for value "id-invalido-123" (type string) at path "_id" for model "Producto"
+CastError: Cast to ObjectId failed for value "id-invalido-123" (type string) at path "_id" for model "Producto"
+    at SchemaObjectId.cast (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/schema/objectId.js:251:11)
+    at SchemaObjectId.SchemaType.applySetters (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/schemaType.js:1259:12)
+    at SchemaObjectId.SchemaType.castForQuery (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/schemaType.js:1695:17)
+    at cast (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/cast.js:390:32)
+    at model.Query.Query.cast (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:5060:12)
+    at model.Query.Query._castConditions (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:2374:10)
+    at model.Query._findOne (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:2697:8)
+    at model.Query.exec (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:4627:80)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at obtenerProductoPorId (/home/beebit/Documentos/etsiit/dai/p4/controllers/productosController.js:274:22)
+2025-11-16 23:16:10 [error]: Error al actualizar producto: Cast to ObjectId failed for value "id-mal-formato" (type string) at path "_id" for model "Producto"
+CastError: Cast to ObjectId failed for value "id-mal-formato" (type string) at path "_id" for model "Producto"
+    at SchemaObjectId.cast (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/schema/objectId.js:251:11)
+    at SchemaObjectId.SchemaType.applySetters (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/schemaType.js:1259:12)
+    at SchemaObjectId.SchemaType.castForQuery (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/schemaType.js:1695:17)
+    at cast (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/cast.js:390:32)
+    at model.Query.Query.cast (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:5060:12)
+    at model.Query.Query._castConditions (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:2374:10)
+    at model.Query._findOne (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:2697:8)
+    at model.Query.exec (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:4627:80)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at actualizarProducto (/home/beebit/Documentos/etsiit/dai/p4/controllers/productosController.js:378:22)
+2025-11-16 23:16:10 [error]: Error al eliminar producto: Cast to ObjectId failed for value "formato-invalido" (type string) at path "_id" for model "Producto"
+CastError: Cast to ObjectId failed for value "formato-invalido" (type string) at path "_id" for model "Producto"
+    at SchemaObjectId.cast (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/schema/objectId.js:251:11)
+    at SchemaObjectId.SchemaType.applySetters (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/schemaType.js:1259:12)
+    at SchemaObjectId.SchemaType.castForQuery (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/schemaType.js:1695:17)
+    at cast (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/cast.js:390:32)
+    at model.Query.Query.cast (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:5060:12)
+    at model.Query.Query._castConditions (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:2374:10)
+    at model.Query._findOneAndDelete (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:3616:8)
+    at model.Query.exec (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:4627:80)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at eliminarProducto (/home/beebit/Documentos/etsiit/dai/p4/controllers/productosController.js:428:22)
+2025-11-16 23:16:10 [error]: Error al crear producto: Producto validation failed: subcategory: Path `subcategory` is required.
+ValidationError: Producto validation failed: subcategory: Path `subcategory` is required.
+    at model.Document.invalidate (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/document.js:3362:32)
+    at /home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/document.js:3123:17
+    at /home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/schemaType.js:1417:9
+    at processTicksAndRejections (node:internal/process/task_queues:85:11)
+2025-11-16 23:17:06 [error]: Error al obtener producto: Cast to ObjectId failed for value "id-invalido-123" (type string) at path "_id" for model "Producto"
+CastError: Cast to ObjectId failed for value "id-invalido-123" (type string) at path "_id" for model "Producto"
+    at SchemaObjectId.cast (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/schema/objectId.js:251:11)
+    at SchemaObjectId.SchemaType.applySetters (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/schemaType.js:1259:12)
+    at SchemaObjectId.SchemaType.castForQuery (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/schemaType.js:1695:17)
+    at cast (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/cast.js:390:32)
+    at model.Query.Query.cast (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:5060:12)
+    at model.Query.Query._castConditions (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:2374:10)
+    at model.Query._findOne (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:2697:8)
+    at model.Query.exec (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:4627:80)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at obtenerProductoPorId (/home/beebit/Documentos/etsiit/dai/p4/controllers/productosController.js:274:22)
+2025-11-16 23:17:06 [error]: Error al actualizar producto: Cast to ObjectId failed for value "id-mal-formato" (type string) at path "_id" for model "Producto"
+CastError: Cast to ObjectId failed for value "id-mal-formato" (type string) at path "_id" for model "Producto"
+    at SchemaObjectId.cast (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/schema/objectId.js:251:11)
+    at SchemaObjectId.SchemaType.applySetters (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/schemaType.js:1259:12)
+    at SchemaObjectId.SchemaType.castForQuery (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/schemaType.js:1695:17)
+    at cast (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/cast.js:390:32)
+    at model.Query.Query.cast (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:5060:12)
+    at model.Query.Query._castConditions (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:2374:10)
+    at model.Query._findOne (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:2697:8)
+    at model.Query.exec (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:4627:80)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at actualizarProducto (/home/beebit/Documentos/etsiit/dai/p4/controllers/productosController.js:379:22)
+2025-11-16 23:17:06 [error]: Error al eliminar producto: Cast to ObjectId failed for value "formato-invalido" (type string) at path "_id" for model "Producto"
+CastError: Cast to ObjectId failed for value "formato-invalido" (type string) at path "_id" for model "Producto"
+    at SchemaObjectId.cast (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/schema/objectId.js:251:11)
+    at SchemaObjectId.SchemaType.applySetters (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/schemaType.js:1259:12)
+    at SchemaObjectId.SchemaType.castForQuery (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/schemaType.js:1695:17)
+    at cast (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/cast.js:390:32)
+    at model.Query.Query.cast (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:5060:12)
+    at model.Query.Query._castConditions (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:2374:10)
+    at model.Query._findOneAndDelete (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:3616:8)
+    at model.Query.exec (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:4627:80)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at eliminarProducto (/home/beebit/Documentos/etsiit/dai/p4/controllers/productosController.js:429:22)
+2025-11-16 23:22:06 [error]: Error al obtener producto: Cast to ObjectId failed for value "id-invalido-123" (type string) at path "_id" for model "Producto"
+CastError: Cast to ObjectId failed for value "id-invalido-123" (type string) at path "_id" for model "Producto"
+    at SchemaObjectId.cast (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/schema/objectId.js:251:11)
+    at SchemaObjectId.SchemaType.applySetters (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/schemaType.js:1259:12)
+    at SchemaObjectId.SchemaType.castForQuery (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/schemaType.js:1695:17)
+    at cast (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/cast.js:390:32)
+    at model.Query.Query.cast (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:5060:12)
+    at model.Query.Query._castConditions (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:2374:10)
+    at model.Query._findOne (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:2697:8)
+    at model.Query.exec (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:4627:80)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at obtenerProductoPorId (/home/beebit/Documentos/etsiit/dai/p4/controllers/productosController.js:273:22)
+2025-11-16 23:22:06 [error]: Error al actualizar producto: Cast to ObjectId failed for value "id-mal-formato" (type string) at path "_id" for model "Producto"
+CastError: Cast to ObjectId failed for value "id-mal-formato" (type string) at path "_id" for model "Producto"
+    at SchemaObjectId.cast (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/schema/objectId.js:251:11)
+    at SchemaObjectId.SchemaType.applySetters (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/schemaType.js:1259:12)
+    at SchemaObjectId.SchemaType.castForQuery (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/schemaType.js:1695:17)
+    at cast (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/cast.js:390:32)
+    at model.Query.Query.cast (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:5060:12)
+    at model.Query.Query._castConditions (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:2374:10)
+    at model.Query._findOne (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:2697:8)
+    at model.Query.exec (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:4627:80)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at actualizarProducto (/home/beebit/Documentos/etsiit/dai/p4/controllers/productosController.js:378:22)
+2025-11-16 23:22:06 [error]: Error al eliminar producto: Cast to ObjectId failed for value "formato-invalido" (type string) at path "_id" for model "Producto"
+CastError: Cast to ObjectId failed for value "formato-invalido" (type string) at path "_id" for model "Producto"
+    at SchemaObjectId.cast (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/schema/objectId.js:251:11)
+    at SchemaObjectId.SchemaType.applySetters (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/schemaType.js:1259:12)
+    at SchemaObjectId.SchemaType.castForQuery (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/schemaType.js:1695:17)
+    at cast (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/cast.js:390:32)
+    at model.Query.Query.cast (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:5060:12)
+    at model.Query.Query._castConditions (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:2374:10)
+    at model.Query._findOneAndDelete (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:3616:8)
+    at model.Query.exec (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:4627:80)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at eliminarProducto (/home/beebit/Documentos/etsiit/dai/p4/controllers/productosController.js:429:22)
+2025-11-16 23:23:18 [error]: Error al obtener producto: Cast to ObjectId failed for value "id-invalido-123" (type string) at path "_id" for model "Producto"
+CastError: Cast to ObjectId failed for value "id-invalido-123" (type string) at path "_id" for model "Producto"
+    at SchemaObjectId.cast (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/schema/objectId.js:251:11)
+    at SchemaObjectId.SchemaType.applySetters (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/schemaType.js:1259:12)
+    at SchemaObjectId.SchemaType.castForQuery (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/schemaType.js:1695:17)
+    at cast (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/cast.js:390:32)
+    at model.Query.Query.cast (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:5060:12)
+    at model.Query.Query._castConditions (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:2374:10)
+    at model.Query._findOne (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:2697:8)
+    at model.Query.exec (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:4627:80)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at obtenerProductoPorId (/home/beebit/Documentos/etsiit/dai/p4/controllers/productosController.js:273:22)
+2025-11-16 23:23:18 [error]: Error al actualizar producto: Cast to ObjectId failed for value "id-mal-formato" (type string) at path "_id" for model "Producto"
+CastError: Cast to ObjectId failed for value "id-mal-formato" (type string) at path "_id" for model "Producto"
+    at SchemaObjectId.cast (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/schema/objectId.js:251:11)
+    at SchemaObjectId.SchemaType.applySetters (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/schemaType.js:1259:12)
+    at SchemaObjectId.SchemaType.castForQuery (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/schemaType.js:1695:17)
+    at cast (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/cast.js:390:32)
+    at model.Query.Query.cast (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:5060:12)
+    at model.Query.Query._castConditions (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:2374:10)
+    at model.Query._findOne (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:2697:8)
+    at model.Query.exec (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:4627:80)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at actualizarProducto (/home/beebit/Documentos/etsiit/dai/p4/controllers/productosController.js:378:22)
+2025-11-16 23:23:18 [error]: Error al eliminar producto: Cast to ObjectId failed for value "formato-invalido" (type string) at path "_id" for model "Producto"
+CastError: Cast to ObjectId failed for value "formato-invalido" (type string) at path "_id" for model "Producto"
+    at SchemaObjectId.cast (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/schema/objectId.js:251:11)
+    at SchemaObjectId.SchemaType.applySetters (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/schemaType.js:1259:12)
+    at SchemaObjectId.SchemaType.castForQuery (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/schemaType.js:1695:17)
+    at cast (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/cast.js:390:32)
+    at model.Query.Query.cast (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:5060:12)
+    at model.Query.Query._castConditions (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:2374:10)
+    at model.Query._findOneAndDelete (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:3616:8)
+    at model.Query.exec (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:4627:80)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at eliminarProducto (/home/beebit/Documentos/etsiit/dai/p4/controllers/productosController.js:429:22)
+2025-11-16 23:25:13 [error]: Error al obtener producto: Cast to ObjectId failed for value "id-invalido-123" (type string) at path "_id" for model "Producto"
+CastError: Cast to ObjectId failed for value "id-invalido-123" (type string) at path "_id" for model "Producto"
+    at SchemaObjectId.cast (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/schema/objectId.js:251:11)
+    at SchemaObjectId.SchemaType.applySetters (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/schemaType.js:1259:12)
+    at SchemaObjectId.SchemaType.castForQuery (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/schemaType.js:1695:17)
+    at cast (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/cast.js:390:32)
+    at model.Query.Query.cast (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:5060:12)
+    at model.Query.Query._castConditions (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:2374:10)
+    at model.Query._findOne (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:2697:8)
+    at model.Query.exec (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:4627:80)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at obtenerProductoPorId (/home/beebit/Documentos/etsiit/dai/p4/controllers/productosController.js:273:22)
+2025-11-16 23:25:13 [error]: Error al actualizar producto: Cast to ObjectId failed for value "id-mal-formato" (type string) at path "_id" for model "Producto"
+CastError: Cast to ObjectId failed for value "id-mal-formato" (type string) at path "_id" for model "Producto"
+    at SchemaObjectId.cast (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/schema/objectId.js:251:11)
+    at SchemaObjectId.SchemaType.applySetters (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/schemaType.js:1259:12)
+    at SchemaObjectId.SchemaType.castForQuery (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/schemaType.js:1695:17)
+    at cast (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/cast.js:390:32)
+    at model.Query.Query.cast (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:5060:12)
+    at model.Query.Query._castConditions (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:2374:10)
+    at model.Query._findOne (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:2697:8)
+    at model.Query.exec (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:4627:80)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at actualizarProducto (/home/beebit/Documentos/etsiit/dai/p4/controllers/productosController.js:378:22)
+2025-11-16 23:25:13 [error]: Error al eliminar producto: Cast to ObjectId failed for value "formato-invalido" (type string) at path "_id" for model "Producto"
+CastError: Cast to ObjectId failed for value "formato-invalido" (type string) at path "_id" for model "Producto"
+    at SchemaObjectId.cast (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/schema/objectId.js:251:11)
+    at SchemaObjectId.SchemaType.applySetters (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/schemaType.js:1259:12)
+    at SchemaObjectId.SchemaType.castForQuery (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/schemaType.js:1695:17)
+    at cast (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/cast.js:390:32)
+    at model.Query.Query.cast (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:5060:12)
+    at model.Query.Query._castConditions (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:2374:10)
+    at model.Query._findOneAndDelete (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:3616:8)
+    at model.Query.exec (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:4627:80)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at eliminarProducto (/home/beebit/Documentos/etsiit/dai/p4/controllers/productosController.js:429:22)
+2025-11-16 23:32:40 [error]: Error al obtener producto: Cast to ObjectId failed for value "id-invalido-123" (type string) at path "_id" for model "Producto"
+CastError: Cast to ObjectId failed for value "id-invalido-123" (type string) at path "_id" for model "Producto"
+    at SchemaObjectId.cast (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/schema/objectId.js:251:11)
+    at SchemaObjectId.SchemaType.applySetters (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/schemaType.js:1259:12)
+    at SchemaObjectId.SchemaType.castForQuery (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/schemaType.js:1695:17)
+    at cast (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/cast.js:390:32)
+    at model.Query.Query.cast (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:5060:12)
+    at model.Query.Query._castConditions (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:2374:10)
+    at model.Query._findOne (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:2697:8)
+    at model.Query.exec (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:4627:80)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at obtenerProductoPorId (/home/beebit/Documentos/etsiit/dai/p4/controllers/productosController.js:273:22)
+2025-11-16 23:32:40 [error]: Error al actualizar producto: Cast to ObjectId failed for value "id-mal-formato" (type string) at path "_id" for model "Producto"
+CastError: Cast to ObjectId failed for value "id-mal-formato" (type string) at path "_id" for model "Producto"
+    at SchemaObjectId.cast (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/schema/objectId.js:251:11)
+    at SchemaObjectId.SchemaType.applySetters (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/schemaType.js:1259:12)
+    at SchemaObjectId.SchemaType.castForQuery (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/schemaType.js:1695:17)
+    at cast (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/cast.js:390:32)
+    at model.Query.Query.cast (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:5060:12)
+    at model.Query.Query._castConditions (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:2374:10)
+    at model.Query._findOne (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:2697:8)
+    at model.Query.exec (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:4627:80)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at actualizarProducto (/home/beebit/Documentos/etsiit/dai/p4/controllers/productosController.js:378:22)
+2025-11-16 23:32:40 [error]: Error al eliminar producto: Cast to ObjectId failed for value "formato-invalido" (type string) at path "_id" for model "Producto"
+CastError: Cast to ObjectId failed for value "formato-invalido" (type string) at path "_id" for model "Producto"
+    at SchemaObjectId.cast (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/schema/objectId.js:251:11)
+    at SchemaObjectId.SchemaType.applySetters (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/schemaType.js:1259:12)
+    at SchemaObjectId.SchemaType.castForQuery (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/schemaType.js:1695:17)
+    at cast (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/cast.js:390:32)
+    at model.Query.Query.cast (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:5060:12)
+    at model.Query.Query._castConditions (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:2374:10)
+    at model.Query._findOneAndDelete (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:3616:8)
+    at model.Query.exec (/home/beebit/Documentos/etsiit/dai/p4/node_modules/mongoose/lib/query.js:4627:80)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at eliminarProducto (/home/beebit/Documentos/etsiit/dai/p4/controllers/productosController.js:429:22)

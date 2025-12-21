@@ -81,13 +81,13 @@ async function agregarAlCarrito(productoId, boton) {
 
         if (response.ok) {
             boton.textContent = 'Añadido';
-            boton.classList.remove('border-green-600', 'text-green-700', 'hover:bg-green-50');
-            boton.classList.add('bg-green-600', 'text-white');
+            boton.classList.remove('btn-primary');
+            boton.classList.add('btn-success');
 
             setTimeout(() => {
                 boton.textContent = textoOriginal;
-                boton.classList.add('border-green-600', 'text-green-700', 'hover:bg-green-50');
-                boton.classList.remove('bg-green-600', 'text-white');
+                boton.classList.remove('btn-success');
+                boton.classList.add('btn-primary');
                 boton.disabled = false;
             }, 1500);
         } else {
@@ -96,8 +96,12 @@ async function agregarAlCarrito(productoId, boton) {
     } catch (error) {
         console.error('Error:', error);
         boton.textContent = 'Error';
+        boton.classList.remove('btn-primary');
+        boton.classList.add('btn-danger');
         setTimeout(() => {
             boton.textContent = textoOriginal;
+            boton.classList.remove('btn-danger');
+            boton.classList.add('btn-primary');
             boton.disabled = false;
         }, 1500);
     }
@@ -116,21 +120,21 @@ function limpiarTarjetas() {
  * @param {number} cantidad - Número de resultados (opcional)
  */
 function actualizarUI(estado, cantidad = 0) {
-    // Ocultar todos los estados
-    mensajeInicial.classList.add('hidden');
-    sinResultados.classList.add('hidden');
-    contadorResultados.classList.add('hidden');
+    // Ocultar todos los estados (Bootstrap usa d-none)
+    mensajeInicial.classList.add('d-none');
+    sinResultados.classList.add('d-none');
+    contadorResultados.classList.add('d-none');
 
     switch (estado) {
         case 'inicial':
-            mensajeInicial.classList.remove('hidden');
+            mensajeInicial.classList.remove('d-none');
             break;
         case 'resultados':
-            contadorResultados.classList.remove('hidden');
+            contadorResultados.classList.remove('d-none');
             numResultados.textContent = cantidad;
             break;
         case 'sin-resultados':
-            sinResultados.classList.remove('hidden');
+            sinResultados.classList.remove('d-none');
             break;
     }
 }
@@ -179,11 +183,11 @@ async function buscar(texto) {
 function handleInput(evt) {
     const texto = evt.target.value.trim();
 
-    // Mostrar/ocultar botón limpiar
+    // Mostrar/ocultar botón limpiar (Bootstrap usa d-none)
     if (texto.length > 0) {
-        btnLimpiar.classList.remove('hidden');
+        btnLimpiar.classList.remove('d-none');
     } else {
-        btnLimpiar.classList.add('hidden');
+        btnLimpiar.classList.add('d-none');
     }
 
     // Cancelar búsqueda anterior si existe
@@ -202,7 +206,7 @@ function handleInput(evt) {
  */
 function limpiarBuscador() {
     buscador.value = '';
-    btnLimpiar.classList.add('hidden');
+    btnLimpiar.classList.add('d-none');
     limpiarTarjetas();
     actualizarUI('inicial');
     buscador.focus();

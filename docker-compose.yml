@@ -3,7 +3,7 @@ services:
     image: mongo
     restart: unless-stopped
     volumes:
-      - ./data:/data/db
+      - mongo_data:/data/db
     ports:
       - 27017:27017
     environment:
@@ -22,3 +22,6 @@ services:
       ME_CONFIG_MONGODB_ADMINPASSWORD: ${PASS}
       ME_CONFIG_MONGODB_URL: mongodb://${USER_DB}:${PASS}@mongo:27017/
       ME_CONFIG_BASICAUTH: false
+
+volumes:
+  mongo_data:

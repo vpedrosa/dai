@@ -55,21 +55,23 @@ async function seed() {
 
     console.log(`✓ ${productosActualizados} productos marcados como rebajados (10% de descuento)`);
 
-    // Crear usuario administrador solo si no existe
+    // Crear o actualizar usuario administrador
     const adminExistente = await Usuario.findOne({ username: 'admin' });
 
     if (!adminExistente) {
       const adminUser = new Usuario({
         username: 'admin',
         email: 'admin@tienda.com',
-        password: 'admin123', // Se cifrará automáticamente por el hook pre-save
+        password: 'admin123',
         admin: true
       });
 
       await adminUser.save();
       console.log("✓ Usuario administrador creado (username: 'admin', password: 'admin123')");
     } else {
-      console.log("✓ Usuario administrador ya existe, no se creó uno nuevo");
+      adminExistente.password = 'admin123';
+      await adminExistente.save();
+      console.log("✓ Contraseña del administrador reiniciada (password: 'admin123')");
     }
 
     // Cerrar la conexión con la base de datos

@@ -3,10 +3,11 @@ import mongoose from "mongoose";
 
 const USER_DB = process.env.USER_DB
 const PASS    = process.env.PASS
+const MONGO_HOST = process.env.MONGO_HOST || 'localhost'
 
 const connectDB = async () => {
   try {
-    const uri = `mongodb://${USER_DB}:${PASS}@localhost:27017/tienda?authSource=admin`;
+    const uri = `mongodb://${USER_DB}:${PASS}@${MONGO_HOST}:27017/tienda?authSource=admin`;
 
     await mongoose.connect(uri);
 

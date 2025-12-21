@@ -5,6 +5,9 @@ import useSWR from "swr"
 // Fetcher para SWR
 const fetcher = (url) => fetch(url).then((res) => res.json())
 
+// URL base del API (en producción usa ruta relativa, en desarrollo usa localhost:8000)
+const API_BASE = import.meta.env.PROD ? '' : 'http://localhost:8000'
+
 // Tiempo mínimo de visualización del spinner (ms)
 const MIN_LOADING_TIME = 300
 
@@ -53,7 +56,7 @@ export default function Resultados({ de }) {
 
   // Hook de SWR para obtener los datos (siempre se llama, pero con key null si < 3 chars)
   const { data, error, isLoading } = useSWR(
-    de.length >= 3 ? `http://localhost:8000/api/busqueda-anticipada/${de}` : null,
+    de.length >= 3 ? `${API_BASE}/api/busqueda-anticipada/${de}` : null,
     fetcher
   )
 

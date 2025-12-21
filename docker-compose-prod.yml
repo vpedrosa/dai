@@ -1,0 +1,59 @@
+services:
+  # Base de datos MongoDB
+  mongo:
+    image: mongo
+    container_name: mongo-dai
+    restart: unless-stopped
+    volumes:
+      - mongo_data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${USER_DB}
+      MONGO_INITDB_ROOT_PASSWORD: ${PASS}
+    networks:
+      - tienda-network
+
+  # Aplicación Node.js
+  tienda:
+    build: .
+    container_name: tienda-dai
+    restart: unless-stopped
+    depends_on:
+      - mongo
+    environment:
+      USER_DB: ${USER_DB}
+      PASS: ${PASS}
+      MONGO_HOST: mongo
+      SECRET_KEY: ${SECRET_KEY}
+      NODE_ENV: production
+    networks:
+      - tienda-network
+
+  # Proxy inverso Caddy
+  caddy:
+    image: caddy:alpine
+    container_name: caddy-dai
+    restart: unless-stopped
+    depends_on:
+      - tienda
+    ports:
+      - "8080:80"
+      - "8443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - ./public:/usr/share/caddy/public
+      - ./caddy/index.html:/usr/share/caddy/index.html
+      - ./caddy/404.html:/usr/share/caddy/404.html
+      - ./frontend/dist:/usr/share/caddy/public/react
+      - caddy_data:/data
+      - caddy_config:/config
+    networks:
+      - tienda-network
+
+networks:
+  tienda-network:
+    driver: bridge
+
+volumes:
+  mongo_data:
+  caddy_data:
+  caddy_config:

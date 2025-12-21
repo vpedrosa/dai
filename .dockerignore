@@ -1,0 +1,58 @@
+# Dependencias
+node_modules/
+npm-debug.log*
+
+# Frontend (se compila por separado)
+frontend/node_modules/
+frontend/dist/
+
+# Git
+.git/
+.gitignore
+
+# Variables de entorno locales
+.env
+.env.local
+.env.*.local
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+logs/
+*.log
+
+# Testing
+tests/
+coverage/
+*.coverage
+jest.config.js
+
+# Documentación
+*.md
+API.md
+README.md
+
+# Archivos de desarrollo
+test-api.http
+.claude/
+
+# Docker
+Dockerfile
+docker-compose*.yml
+Caddyfile
+
+# Datos locales
+data/
+
+# Build
+dist/
+build/
+
+# Temporal
+*.tmp
+.cache/

@@ -140,4 +140,9 @@ app.get("/test", (req, res) => {
 app.use("/usuarios", UsuariosRouter);  // para urls que comiencen por /usuarios
 app.use("/", TiendaRouter);
 
+// Manejador de 404 - debe ir al final
+app.use((req, res) => {
+    res.status(404).render('404.html');
+});
+
 export default app;

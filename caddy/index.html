@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda Online - DAI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <div class="max-w-4xl mx-auto py-16 px-4">
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-bold text-gray-800 mb-4">Tienda Online</h1>
+            <p class="text-gray-600 text-lg">Desarrollo de Aplicaciones para Internet - DAI</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+            <!-- Tienda MPA -->
+            <a href="/" class="block bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow p-6">
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                        </svg>
+                    </div>
+                    <h2 class="text-xl font-semibold text-gray-800 mb-2">Tienda Online</h2>
+                    <p class="text-gray-600 text-sm">Aplicación MPA con Express, Nunjucks y Bootstrap</p>
+                </div>
+            </a>
+
+            <!-- Búsqueda anticipada -->
+            <a href="/busqueda-anticipada" class="block bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow p-6">
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                    </div>
+                    <h2 class="text-xl font-semibold text-gray-800 mb-2">Búsqueda Anticipada</h2>
+                    <p class="text-gray-600 text-sm">Búsqueda en tiempo real con manipulación del DOM</p>
+                </div>
+            </a>
+
+            <!-- React SPA -->
+            <a href="/public/react/" class="block bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow p-6">
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"></path>
+                        </svg>
+                    </div>
+                    <h2 class="text-xl font-semibold text-gray-800 mb-2">React SPA</h2>
+                    <p class="text-gray-600 text-sm">Frontend con React, Vite, Tailwind y SWR</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="mt-12 text-center">
+            <p class="text-gray-500 text-sm">
+                <a href="/api-docs" class="text-green-600 hover:underline">Documentación API (Swagger)</a>
+            </p>
+        </div>
+
+        <footer class="mt-16 text-center text-gray-400 text-sm">
+            <p>Práctica 7 - Despliegue con Docker Compose</p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+:80 {
+    # Página de índice
+    handle /index.html {
+        root * /usr/share/caddy
+        file_server
+    }
+
+    # Redirigir /react a la app React
+    redir /react /public/react/index.html
+
+    # Servir archivos estáticos (public y react build)
+    handle_path /public/* {
+        root * /usr/share/caddy/public
+        file_server
+    }
+
+    # Proxy inverso a la aplicación Node.js
+    handle /* {
+        reverse_proxy tienda-dai:8000
+    }
+
+    # Página 404 personalizada
+    handle_errors {
+        rewrite * /404.html
+        root * /usr/share/caddy
+        file_server
+    }
+
+    # Logging
+    log {
+        output stdout
+    }
+}
